@@ -1,21 +1,25 @@
 
-color=["blue","red","yellow","teal","purple","green","black","brown","orange","grey"]
-var lines = [];
+color=["#fece00","#0065ae","#9f971a","#be418d","#f19043","#84c28e","#f2a4b7","#84c28e","#d5c900","#e4b327","#8c5e24","#007e49","#99d4de","#622280"];
 var metros = [];
-var numberOflines=4;
-var numberofStationligne1= 7;
-var numberofMetroperlign = 2;
+var numberOflines=network.length;
+var numberofStationligne1= 12;
+var numberofMetroperlign = 4;
 var sens=1;
 var n=0;
+var lines = [];
+
+
 
 
 function startGame() {
     myGameArea.start();
     for(j=0;j<numberOflines;j++){
         var line=[];
-        for(i = 0; i < numberofStationligne1; ++i){
-            var newStation = new station(500*Math.random()+50*i,500*Math.random()+50*j,color[j])
-            //var newStation = new station(60*i+40*j,30*j*Math.pow(-1,j)+40+80,color[j])
+        for(i = 0; i < network[j].length; ++i){
+        console.log(network[j][i][0]);
+         var newStation = new station(network[j][i][0],network[j][i][1],color[j]);
+          // var newStation = new station(500*Math.random()+50*i,500*Math.random()+50*j,color[j]);
+           // var newStation = new station(60*i+40*j,30*j*Math.pow(-1,j)+40+80,color[j]);
             line.push(newStation);
             }
         lines.push(line);
@@ -128,7 +132,7 @@ function updateGameArea() {
     
  
     for(j=0;j<numberOflines;j++){
-        for(i=0;i<numberofStationligne1;i++){
+        for(i=0;i<network[j].length;i++){
         lines[j][i].update();
         for(k=0;k<numberofMetroperlign;k++){
         metros[numberofMetroperlign*j+k].refresh(j,n,sens);}}
