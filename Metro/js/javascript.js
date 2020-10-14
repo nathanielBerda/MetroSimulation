@@ -57,7 +57,7 @@ function station(x,y,color){
     this.update = function() {
         ctx = myGameArea.context;
         ctx.fillStyle = color;
-        ctx.fillRect(this.x, this.y, 20, 20);
+        ctx.fillRect(this.x, this.y, 15, 15);
 }
 }
 
